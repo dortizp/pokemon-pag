@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 
-const ButtonPagination = () => {
+const ButtonPagination = ({action}) => {
   return (
     <div>
-      <button>Prev</button>
-      <button>Next</button>
+      <button onClick={action}>Prev</button>
     </div>
   );
 };
