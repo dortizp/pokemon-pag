@@ -18,9 +18,9 @@ const Grid = styled.div`
 const Cards = ({ data }) => {
   return (
     <Grid>
-      {data.map((e) => (
-        <Card key={e.name} name={e.name} />
-      ))}
+      {data.map((e) => {
+        return <Card key={e.name} name={e.name} url={e.url} />;
+      })}
     </Grid>
   );
 };
