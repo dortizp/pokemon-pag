@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ButtonPagination from "./components/ButtonPagination";
+import Cards from "./components/Cards";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [pokemonList, setPokemonList] = useState([]);
+
+  useEffect(() => {
+    const getPokemon = async () => {
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
+      const data = await response.json();
+      setPokemonList(data.results);
+    };
+
+    getPokemon();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hola Pokemon
+      {pokemonList ? console.log(pokemonList) : ""}
+      <ButtonPagination />
+      <Cards data={pokemonList} />
     </div>
   );
 }
