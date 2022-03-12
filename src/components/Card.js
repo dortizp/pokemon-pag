@@ -19,14 +19,21 @@ const Card = ({ name, url }) => {
   return (
     <StyledDiv>
       <h2>{name}</h2>
-      <p>Weight: {pokemonData.weight ? pokemonData.weight : ""}</p>
       <p>
-        Picture: {pokemonData.sprites ? pokemonData.sprites.front_default : ""}
+        {pokemonData.sprites ? (
+          <img src={pokemonData.sprites.front_default} alt="pokemon_picture" />
+        ) : (
+          ""
+        )}
       </p>
       <p>
-        Types:{" "}
         {pokemonData.types
-          ? pokemonData.types.map((type) => <p>{type.type.name}</p>)
+          ? pokemonData.types.map((type) => (
+              <span>
+                <br />
+                {type.type.name}
+              </span>
+            ))
           : ""}
       </p>
     </StyledDiv>
